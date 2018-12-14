@@ -1,0 +1,26 @@
+ .mySlides {
+ 	display:none;
+ }
+
+.mySlidess {
+	display:none;
+	margin-left: 35%;
+}
+ 
+.button{
+	background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 53%;
+    margin-top: 30px;
+}
+
+.button1{
+	width: 100%;
+}
