@@ -32,8 +32,8 @@ Route::view('/about', 'frontEnd.about')->name('frontEnd.about');
 Route::view('/service', 'frontEnd.service')->name('frontEnd.service');
 Route::view('/portofolio', 'frontEnd.portofolio')->name('frontEnd.porto');
 Route::view('/contact', 'frontEnd.contact')->name('frontEnd.contact');
-Route::view('/news/global', 'frontEnd.news')->name('frontEnd.news');
-Route::view('/news-detail/global', 'frontEnd.detailNews')->name('frontEnd.n_details');
+Route::get('/news/global', 'FrontEnd\NewsController@index')->name('frontEnd.news');
+Route::get('/news-detail/{post}', 'FrontEnd\NewsController@detail')->name('frontEnd.n_details');
 
 
 Route::view('/service/custom-app', 'frontEnd.service_customapp')->name('frontEnd.s_customapp');

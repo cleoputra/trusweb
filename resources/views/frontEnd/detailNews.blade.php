@@ -29,7 +29,7 @@
 			<link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
 			<link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">
 			<link rel="stylesheet" href="{{asset('css/main.css')}}">
-		<title>TRUS :: Integrated System Solution</title>
+		<title>{{ $post->title }} | TRUS :: Integrated System Solution</title>
 		</head>
 		<body>	
 			  <header id="header" id="home">
@@ -67,7 +67,7 @@
 							<div class="single-post row">
 								<div class="col-lg-12">
 									<div class="feature-img">
-										<img class="img-fluid" src="img/blog/feature-img1.jpg" alt="">
+										<img class="img-fluid" src="{{ asset('storage/' . $post->photo) }}" alt="">
 									</div>									
 								</div>
 								<div class="col-lg-3  col-md-3 meta-details">
@@ -78,23 +78,15 @@
 										<li><a href="#">Lifestyle</a></li>
 									</ul>
 									<div class="user-details row">
-										<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
-										<p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
+										<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{ $post->user->name }}</a> <span class="lnr lnr-user"></span></p>
+										<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{ $post->created_at }}</a> <span class="lnr lnr-calendar-full"></span></p>
 																														
 									</div>
 								</div>
 								<div class="col-lg-9 col-md-9">
-									<a class="posts-title" href="#"><h3>Astronomy Binoculars A Great Alternative</h3></a>
-									<p class="excert">
-										MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
-									</p>
-									<p>
-										Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed
-									</p>
-									<p>
-										Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed
-									</p>
-							</div>
+									<a class="posts-title" href="#"><h3>{{ $post->title }}</h3></a>
+									{!! $post->content !!}
+								</div>
 								
 								</div>
 							<div class="navigation-area">
@@ -114,35 +106,7 @@
 
 							
 						</div>
-						<div class="col-lg-4 sidebar-widgets">
-							<div class="widget-wrap">
-						
-								<div class="single-sidebar-widget popular-post-widget">
-									<h4 class="popular-title">Popular Posts</h4>
-									<div class="popular-post-list">
-										<div class="single-post-list d-flex flex-row align-items-center">
-											<div class="thumb">
-												<img class="img-fluid" src="img/blog/pp1.jpg" alt="">
-											</div>
-											<div class="details">
-												<a href="blog-single.html"><h6>Space The Final Frontier</h6></a>
-												<p>02 Hours ago</p>
-											</div>
-										</div>
-										<div class="single-post-list d-flex flex-row align-items-center">
-											<div class="thumb">
-												<img class="img-fluid" src="img/blog/pp1.jpg" alt="">
-											</div>
-											<div class="details">
-												<a href="blog-single.html"><h6>Space The Final Frontier</h6></a>
-												<p>02 Hours ago</p>
-											</div>
-										</div>
-																									
-									</div>
-								</div>
-							</div>
-						</div>
+						@include('includes.widget')
 						
 					</div>
 				</div>	
