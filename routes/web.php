@@ -23,17 +23,13 @@ Route::get('/home-eng', 'HomeController@mail');
 Route::view('/admin/homeAdmin', 'admin.homeAdmin')->name('admin.home');
 Route::view('/admin/addPost', 'admin.addPost')->name('admin.addPost');
 //admin page
-Route::get('/admin', function () {
+Route::get('/adminLogin', function () {
     return view('welcome');
 });
 Route::get('/home', 'PostController@show')->name('home');
 Route::get('/admin/addNewPost', 'PostController@index')->name('post.index');
 Route::post('/admin/addPost', 'PostController@store')->name('post.add');
 Route::post('/admin/monitor', 'PostController@form')->name('post.monitor');
-
-
-
-
 
 
 
@@ -44,6 +40,7 @@ Route::view('/service', 'frontEnd.service')->name('frontEnd.service');
 Route::view('/portofolio', 'frontEnd.portofolio')->name('frontEnd.porto');
 Route::view('/contact', 'frontEnd.contact')->name('frontEnd.contact');
 Route::view('/news/global', 'frontEnd.news')->name('frontEnd.news');
+Route::view('/news-detail/global', 'frontEnd.detailNews')->name('frontEnd.n_details');
 
 
 Route::view('/service/custom-app', 'frontEnd.service_customapp')->name('frontEnd.s_customapp');
