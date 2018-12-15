@@ -4,40 +4,58 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Storage;
 
 class PostController extends Controller
 {
-    public function index() {
-    	return view ('admin.addNewPost');
-    }
-
-    public function store(Request $request) {
-        
-         $post = new Post();
-         $post->title = $request->postTitle;
-         $post->author = "TRUS admin";
-         $post->post = $request->postContent;
-
-         $post->save();
-        
-         $postTitle = $request['postTitle'];
-         $postContent = $request['postContent'];
-
-         return view('output', ['postTitle' => $postTitle]);
-         return view('output', ['postContent' => $postContent]);
-    }
-
-    public function form() {
-        $post = DB::table('post_panel')->orderBy('name')->get();
-
-        return view('post.monitor', ['post_panel' => $post]);
-    }
-
-    public function show() 
+    public function __construct()
     {
+        $this->middleware('auth');
+    }
 
-        $posts = Post::all();
+    public function index(Request $request)
+    {
+        return view('admin.homeAdmin', ['posts' => Post::all()]);
+    }
 
-        return view('home', ['posts' => $posts]);
+    public function addForm(Request $request)
+    {
+        return view('admin.addPost');
+    }
+
+    public function add(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:200',
+            'author' => 'required|integer|exists:users,id',
+            'content' => 'required|string',
+            'photo' => 'image|nullable',
+        ]);
+
+        $photo = $request->photo->store('posts', 'public');
+
+        $post = Post::create([
+            'title' => $request->title,
+            'author' => $request->author,
+            'content' => $request->content,
+            'photo' => $photo,
+        ]);
+
+        return redirect()->route('admin.home');
+    }
+
+    public function delete(Request $request)
+    {
+        $request->validate([
+            'post' => 'required|integer|exists:posts,id',
+        ]);
+
+        $post = Post::find($request->post);
+
+        Storage::disk('public')->delete($post->photo);
+
+        $post->delete();
+
+        return redirect()->route('admin.home');
     }
 }

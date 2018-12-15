@@ -14,19 +14,28 @@
                 <table class="table table-hover">
                   <tr>
                     <th>ID</th>
-                    <th>User</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Reason</th>
+                    <th>Photo</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Content</th>
+                    <th>Action</th>
                   </tr>
-                  <tr>
-                    <td>183</td>
-                    <td>John Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="label label-success">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                 
+                    @foreach ($posts as $post)
+                      <tr>
+                        <td>{{ $post->id }}</td>
+                        <td><img src="{{ asset('storage/' . $post->photo) }}" width="200"></td>
+                        <td>{{ $post->title }}</td>
+                        <td>{{ $post->user->name }}</td>
+                        <td>{{ str_limit($post->content) }}</td>
+                        <td>
+                          <form method="post" action="{{ route('admin.deletePost') }}">
+                            @csrf
+                            <input type="hidden" name="post" value="{{ $post->id }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                          </form>
+                        </td>
+                      </tr>
+                    @endforeach
                 </table>
               </div>
               <!-- /.box-body -->

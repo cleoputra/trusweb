@@ -8,6 +8,12 @@ use laravel\Scout\Searchable;
 
 class Post extends Model
 {
-   protected $table = "post_panel";
-   protected $fillable = ['title', 'post'];
+    protected $fillable = [
+        'title', 'author', 'content', 'photo',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'author');
+    }
 }

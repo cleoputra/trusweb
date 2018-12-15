@@ -20,11 +20,10 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::view('/', 'frontEnd.mainEng')->name('frontEnd.m_Eng');
 Route::get('/home-eng', 'HomeController@mail');
 
-
-Route::middleware('auth')->group(function () {
-    Route::view('/admin/homeAdmin', 'admin.homeAdmin')->name('admin.home');
-    Route::view('/admin/addPost', 'admin.addPost')->name('admin.addPost');
-});
+Route::get('/admin/homeAdmin', 'PostController@index')->name('admin.home');
+Route::get('/admin/addPost', 'PostController@addForm')->name('admin.addPost.form');
+Route::post('/admin/addPost', 'PostController@add')->name('admin.addPost');
+Route::post('/admin/deletePost', 'PostController@delete')->name('admin.deletePost');
 
 //english page
 Route::view('/home-eng', 'frontEnd.index')->name('frontEnd.index');

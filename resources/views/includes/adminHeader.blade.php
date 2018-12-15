@@ -96,7 +96,7 @@
           </a>
         </li>
         <li>
-          <a href="{{route('admin.addPost')}}">
+          <a href="{{route('admin.addPost.form')}}">
             <span>Add New Post</span>
           </a>
         </li> 
