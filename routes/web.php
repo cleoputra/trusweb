@@ -25,6 +25,7 @@ Route::get('/admin/addPost', 'PostController@addForm')->name('admin.addPost.form
 Route::post('/admin/addPost', 'PostController@add')->name('admin.addPost');
 Route::post('/admin/deletePost', 'PostController@delete')->name('admin.deletePost');
 
+
 //english page
 Route::view('/home-eng', 'frontEnd.index')->name('frontEnd.index');
 Route::view('/about', 'frontEnd.about')->name('frontEnd.about');
@@ -32,6 +33,7 @@ Route::view('/service', 'frontEnd.service')->name('frontEnd.service');
 Route::view('/portofolio', 'frontEnd.portofolio')->name('frontEnd.porto');
 Route::view('/contact', 'frontEnd.contact')->name('frontEnd.contact');
 Route::view('/news/global', 'frontEnd.news')->name('frontEnd.news');
+Route::view('/news-detail/global', 'frontEnd.detailNews')->name('frontEnd.n_details');
 
 
 Route::view('/service/custom-app', 'frontEnd.service_customapp')->name('frontEnd.s_customapp');

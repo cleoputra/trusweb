@@ -89,7 +89,7 @@
 									<p class="excert">
 										Tim Riset CNBC Indonesia menilai empat saham ini memiliki peluang kenaikan harga pada perdagangan bursan hari ini, Rabu(10/10/2018), dengan mengacu pada pola pergerakan sahmnya secara teknikal...
 									</p>
-									<a href="#" class="primary-btn">View More</a>
+									<a href="{{route('frontEnd.n_details')}}" class="primary-btn">View More</a>
 								</div>
 							</div>
 							<div class="single-post row">
