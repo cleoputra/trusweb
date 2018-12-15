@@ -60,7 +60,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="#" class="btn btn-danger btn-flat">Sign out</a>
+                  <form method="post" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-flat">Sign out</button>
+                  </form>
                 </div>
               </li>
             </ul>

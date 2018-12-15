@@ -12,30 +12,19 @@
 */
 
 
-Auth::routes();
+// Authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::view('/', 'frontEnd.mainEng')->name('frontEnd.m_Eng');
 Route::get('/home-eng', 'HomeController@mail');
 
 
-
-
-Route::view('/admin/homeAdmin', 'admin.homeAdmin')->name('admin.home');
-Route::view('/admin/addPost', 'admin.addPost')->name('admin.addPost');
-//admin page
-Route::get('/admin', function () {
-    return view('welcome');
+Route::middleware('auth')->group(function () {
+    Route::view('/admin/homeAdmin', 'admin.homeAdmin')->name('admin.home');
+    Route::view('/admin/addPost', 'admin.addPost')->name('admin.addPost');
 });
-Route::get('/home', 'PostController@show')->name('home');
-Route::get('/admin/addNewPost', 'PostController@index')->name('post.index');
-Route::post('/admin/addPost', 'PostController@store')->name('post.add');
-Route::post('/admin/monitor', 'PostController@form')->name('post.monitor');
-
-
-
-
-
-
 
 //english page
 Route::view('/home-eng', 'frontEnd.index')->name('frontEnd.index');
